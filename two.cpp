@@ -10,11 +10,14 @@ using namespace std;
 	i = left; 
 	j = mid; 
 	k = left; 
-	while ((i <= mid - 1) && (j <= right)) { 
-		if (arr[i] <= arr[j]) { 
+	while ((i <= mid - 1) && (j <= right)) 
+    { 
+		if (arr[i] <= arr[j]) 
+        { 
 			temp[k++] = arr[i++]; 
 		} 
-		else { 
+		else 
+        { 
 			temp[k++] = arr[j++]; 
 			inv_count = inv_count + (mid - i); 
 		} 
