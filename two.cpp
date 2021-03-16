@@ -1,34 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long int
 
-long long int _mergeSort(long long int arr[], long long temp[], long long  left, long long right); 
-long long int merge(long long int arr[], long long int temp[],long long int left, long long int mid, long long right); 
-
-
-long long int mergeSort(long long int arr[], long long int array_size) 
+  int merge(int arr[],int temp[],int left,int mid,int right) 
 { 
-	long long int temp[array_size]; 
-	return _mergeSort(arr, temp, 0, array_size - 1); 
-} 
-
-long long int _mergeSort(long long int arr[], long long int temp[], long long int left, long long int right) 
-{ 
-long long int mid, inv_count = 0; 
-	if (right > left)
-	{ 
-
-		mid = (right + left) / 2; 
-		inv_count += _mergeSort(arr, temp, left, mid); 
-		inv_count += _mergeSort(arr, temp, mid + 1, right); 
-		inv_count += merge(arr, temp, left, mid + 1, right); 
-	} 
-	return inv_count; 
-} 
-
-long long int merge(long long int arr[], long long  temp[], long long left, long long mid, long long right) 
-{ 
-	long long int i, j, k; 
-	long long int inv_count = 0; 
+	  int i, j, k; 
+	  int inv_count = 0; 
 
 	i = left; 
 	j = mid; 
@@ -56,20 +33,42 @@ long long int merge(long long int arr[], long long  temp[], long long left, long
 } 
 
 
-int main()
+  int MergeSort(int arr[],int temp[],int left,int right) 
+{ 
+  int mid, inv_count = 0; 
+	if (right > left)
+	{ 
+
+		mid = (right + left) / 2; 
+		inv_count += MergeSort(arr, temp, left, mid); 
+		inv_count += MergeSort(arr, temp, mid + 1, right); 
+		inv_count += merge(arr, temp, left, mid + 1, right); 
+	} 
+	return inv_count; 
+} 
+
+
+  int _mergesort(int arr[],int array_size) 
+{ 
+	  int temp[array_size]; 
+	return MergeSort(arr, temp, 0, array_size - 1); 
+} 
+
+
+int32_t main()
  {
-	long long int p;
+        int p;
 	cin>>p;
 	while(p--)
 	{
-	    long long int n;
+	      int n;
 	    cin>>n;
-	    long long int arr[n];
+	      int arr[n];
 	    for(int i=0;i<n;i++)
 	    cin>>arr[i];
 	    
 	        
-	  long long int count = mergeSort(arr, n); 
+	    int count = _mergesort(arr, n); 
 	    
 	    cout<<count<<endl;
 	}
