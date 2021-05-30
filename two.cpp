@@ -18,8 +18,9 @@ using namespace std;
 		} 
 		else 
         { 
-			temp[k++] = arr[j++]; 
-			inv_count = inv_count + (mid - i); 
+			temp[k++] = arr[j++]; 					
+			inv_count = inv_count + (mid - i); 	//left array= i to mid
+                                 				//right array= mid+1 to right
 		} 
 	} 
 
